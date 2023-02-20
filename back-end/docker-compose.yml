@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+  web:
+    build: ../front-end/my-app/
+    ports:
+      - "80:3000"
+  database:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "1234"
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./database/conf.d:/etc/mysql/conf.d
+      - ./database/initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+  application:
+    build: ./backend/
+    depends_on:
+      - database
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://3.36.49.220:3306/inburger?useSSH=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: "1234"
+    ports:
+      - 8081:8081
+    restart: always

@@ -1,0 +1,10 @@
+.front {
+  width: 1080px;
+  position: absolute;
+  bottom: 450px;
+}
+
+.back {
+  height: 1920px;
+  position: relative;
+}

@@ -1,0 +1,8 @@
+#translateY1 {
+    transform: translateY(30%);
+    transition: transform 1s;
+  }
+  #translateY3 {
+    transform: translateY(50%);
+    transition: transform 1s;
+  }
